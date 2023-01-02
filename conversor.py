@@ -1,6 +1,6 @@
 # coding=UTF-8
 
-import arg.value as value
+import value as value
 import pandas as pd
 
 def openSped(file):
@@ -52,14 +52,16 @@ def createTable(dfs,f):
 		format(worksheet,dfs[d])		
 	writer.close()
 
-def main():
-	file=input('arquivo:')
-	sped = openSped(file)
-	dfs = createDFs(value.blocos,sped)
+def main(file,new):
+	#file=input('arquivo:')
 	try:
-		file=file.split('.')[0]
-	except:
-		pass				
-	createTable(dfs,file)
-
-main()
+		sped = openSped(file)
+		dfs = createDFs(value.blocos,sped)
+		try:
+			file=file.split('.')[0]
+		except:
+			pass				
+		createTable(dfs,new)
+		return 'Gerado '+new
+	except Exception as e:
+		return 'ERROR \n'+str(e)
