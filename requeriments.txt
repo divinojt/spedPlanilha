@@ -1,0 +1,4 @@
+pandas==1.5.2
+xlsxwriter
+tk
+customtkinter==5.0.3
